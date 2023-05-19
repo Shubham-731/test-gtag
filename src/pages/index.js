@@ -1,11 +1,30 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "next/font/google";
+import styles from "@/styles/Home.module.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const handleDocsEvent = (link) => {
+    window.gtag("event", "goto_docs", {
+      event_name: "click",
+      button_type: link,
+    });
+  };
+
+  const handleLogoEvent = () => {
+    window.gtag("event", "click_on_logo", {
+      event_name: "Click",
+    });
+  };
+
+  const handleClickNextjs = () => {
+    window.gtag("event", "click_nextjs", {
+      event_name: "Click",
+    });
+  };
+
   return (
     <>
       <Head>
@@ -25,8 +44,9 @@ export default function Home() {
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleLogoEvent}
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -39,7 +59,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.center}>
+        <div className={styles.center} onClick={handleClickNextjs}>
           <Image
             className={styles.logo}
             src="/next.svg"
@@ -56,6 +76,11 @@ export default function Home() {
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              handleDocsEvent(
+                "https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+              )
+            }
           >
             <h2>
               Docs <span>-&gt;</span>
@@ -110,5 +135,5 @@ export default function Home() {
         </div>
       </main>
     </>
-  )
+  );
 }
