@@ -23,7 +23,7 @@ jobs:
           cache-dependency-path: "pnpm-lock.yaml"
 
       - name: Set Environment Variables
-        run: echo "$EDITOR_ENV_VARS" > .env.local
+        run: echo {{ $EDITOR_ENV_VARS }} > .env.local
 
       - run: pnpm install
       - run: pnpm build
