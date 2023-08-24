@@ -25,4 +25,4 @@ jobs:
         
     - run: pnpm install
     - run: pnpm build
-    - run: pnpm start
+    - run: pnpm start -p 3001
